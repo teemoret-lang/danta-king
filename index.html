@@ -1690,6 +1690,15 @@ box-shadow:inset 0 0 0 1px rgba(255,255,255,.05),0 18px 42px rgba(0,0,0,.22)}
  #mobileTradeDock .mobile-dock-pct button{height:27px}
  #mobileTradeDock .mobile-dock-actions button{height:38px}
 }
+</style><style id="danta-mobile-single-trade-panel-v115">
+/* Regression guard: mobile trading has ONE execution surface: the fixed dock.
+   Preserve account-panel DOM for calculations and desktop presentation. */
+@media (max-width:1000px), (hover:none) and (pointer:coarse) {
+  html.danta-trading-selected body .layout .sidebar > .account-panel,
+  html.danta-trading-active body .layout .sidebar > .account-panel {
+    display:none!important;
+  }
+}
 </style></head><body>
 <section id="dantaHub" class="danta-screen" aria-label="내일은 단타왕 메인 메뉴">
  <div class="danta-screen-inner">
