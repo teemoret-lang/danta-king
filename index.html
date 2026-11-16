@@ -2067,6 +2067,12 @@ function activateDate(date){
  // Offer only stocks with recorded events for this date; never show a missing stock.
  stock.replaceChildren(...ordered.map(c=>{let opt=document.createElement('option');opt.value=c;opt.textContent=META[c]||c;return opt;}));
  if(ordered.includes(previous))stock.value=previous;
+ // Keep the trading-screen stock selector in sync with the setup selector for this date.
+ const tradingStock=$('stock');
+ if(tradingStock){
+   tradingStock.replaceChildren(...ordered.map(c=>{const opt=document.createElement('option');opt.value=c;opt.textContent=META[c]||c;return opt;}));
+   tradingStock.value=stock.value;
+ }
  if(!ordered.length){$('setupStartButton').disabled=true;return;}
  const selected=selectionByDate[date];
  $('setupSelectionInfo').style.display=selected?'block':'none';
